@@ -11,15 +11,15 @@ contract FundMeTest is Test {
     address USER = makeAddr("user");
     uint256 constant SEND_VALUE = 0.1 ether;
     uint256 constant STARTING_BALANCE = 10 ether;
-    function setUp() external{
+
+    function setUp() external {
         // fundMe = new FundMe(0x694AA1769357215DE4FAC081bf1f309aDC325306);
         DeployFundMe deployFundMe = new DeployFundMe();
         fundMe = deployFundMe.run();
         vm.deal(USER, STARTING_BALANCE); // Give USER 10 ETH
-
     }
 
-    function testMinimumDollarIsFive() public{
+    function testMinimumDollarIsFive() public {
         assertEq(fundMe.MINIMUM_USD(), 5e18);
     }
 
@@ -35,8 +35,7 @@ contract FundMeTest is Test {
 
     function testFundFailsWithoutEnoughETH() public {
         vm.expectRevert();
-        fundMe.fund(); // 
-        
+        fundMe.fund(); //
     }
 
     function testFundUpdatesFundedDataStructure() public {
@@ -76,15 +75,12 @@ contract FundMeTest is Test {
         uint256 endingFundMeBalance = address(fundMe).balance;
         assertEq(endingFundMeBalance, 0);
         assertEq(startingFundMeBalance + startingOwnerBalance, endingOwnerBalance);
-
     }
 
     function testWithdrawFromMultipleFunders() public funded {
         uint160 numberOfFunders = 10;
         uint160 startingFunderIndex = 1;
-        for(uint160 i = startingFunderIndex; i < numberOfFunders; i++) {
-
-
+        for (uint160 i = startingFunderIndex; i < numberOfFunders; i++) {
             hoax(address(i), SEND_VALUE); // Simulate a transaction from the funder
             fundMe.fund{value: SEND_VALUE}();
         }
@@ -103,9 +99,7 @@ contract FundMeTest is Test {
     function testWithdrawFromMultipleFundersCheaper() public funded {
         uint160 numberOfFunders = 10;
         uint160 startingFunderIndex = 1;
-        for(uint160 i = startingFunderIndex; i < numberOfFunders; i++) {
-
-
+        for (uint160 i = startingFunderIndex; i < numberOfFunders; i++) {
             hoax(address(i), SEND_VALUE); // Simulate a transaction from the funder
             fundMe.fund{value: SEND_VALUE}();
         }
