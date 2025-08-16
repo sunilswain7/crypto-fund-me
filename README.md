@@ -63,8 +63,8 @@ forge --version
 ### Quickstart
 ```
 
-git clone https://github.com/yourusername/foundry-fund-me
-cd foundry-fund-me
+git clone https://github.com/sunilswain7/crypto-fund-me
+cd crypto-fund-me
 make
 
 ```
