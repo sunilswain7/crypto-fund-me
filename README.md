@@ -1,7 +1,7 @@
 ***
 
 
-# 🚀 Foundry Fund Me
+# 🚀 Crypto Fund Me
 
 > A minimal Foundry + Solidity project that allows users to fund the contract owner in ETH, with donations valued in USD through Chainlink price feeds.
 
@@ -203,5 +203,14 @@ forge snapshot
 forge fmt
 
 ```
+
+---
+---
+
+## 💖 Thank You
+
+Thanks for checking out **Crypto Fund Me**! ✨  
+I hope this project helps you learn more about **Solidity, Foundry, and Chainlink price feeds**.  
+If you found it useful or inspiring, consider giving the repo a ⭐ on GitHub — it really helps!  
 
 ---
